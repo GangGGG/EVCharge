@@ -2,12 +2,14 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from datetime import datetime as d1
 from django.template import Template, Context
-from EVTest.models import TUser, Electricprice
+from EVTest.models import TUser, Electricprice, Stateofcharge
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.pyplot import plot, savefig
 import random
 import uuid
+import json
+import time
 import datetime
 import numpy as np
 import matplotlib.pyplot as plt
@@ -41,8 +43,8 @@ sampleNo = int((1440 / EPriceSampleTime) + 1)  # 实时电价取样点97
 #     #     #                          'startTime': str(Time[0]), 'endTime': str(Time[len(Time) - 1]),
 #     #     #                          'priceAverage': str(priceAverage), 'finalPay': str(priceFinal)})
 #     response = JsonResponse({'realSOCChange': str(chargingElectric),
-#                              'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
-#                              'finalPay': str(priceFinal)})
+# #                              'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
+# #                              'finalPay': str(priceFinal)})
 #     sql1 = []
 #     # print(Time.tolist())
 #
@@ -105,6 +107,83 @@ def charge(request):
 
 def discharge(request):
     return render(request, 'discharge.html')
+
+
+def chargeTest(request):
+    SOCStart = float(request.GET.get("n1"))
+    SOCChange = float(request.GET.get("n2"))
+    flag = 0  # 充电
+    startTime = datetime.datetime.now().hour * 60 + datetime.datetime.now().minute
+    [Time, SOC, index0, index1] = chargeProcess(startTime, SOCStart, SOCChange)
+    [chargingElectric, priceAverage, priceFinal] = calculateThePrice(Time, SOC)
+
+    sql1 = []
+    userID = str(uuid.uuid1())
+    for i in range(0, len(Time.tolist())):
+        sql1.append(
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=SOC.tolist()[i], times=Time.tolist()[i],
+                          flag=flag))
+    Stateofcharge.objects.bulk_create(sql1)
+    response = JsonResponse({'realSOCChange': str(chargingElectric),
+                             'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
+                             'finalPay': str(priceFinal)})
+    return response
+
+
+# 记录放电数据
+#####输入参数:
+#    SOC 当前电量 kWh
+#    W 总耗电量 kWh
+#    T 总时间 min
+#    N 点的总个数
+#####输出参数:
+#    flag:=1放电标志 =0充电标志
+#    k:电动汽车停止运行的点
+#    time2str:充电时间列表
+#    soc:电量列表
+def dischargeTest(request):
+    SOC = float(request.GET.get("n1"))
+    W = float(request.GET.get("n2"))
+    T = float(request.GET.get("n3"))
+    N = int(request.GET.get("n4"))
+    flag = 1
+    time2str = []
+    sql1 = []
+    a = time.time()  # 获取当前时间s
+    print("当前时间为:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(a)))
+    print("转化为分钟后:%fs" % (a))
+    w = W / (N - 1)  # 平均耗电量
+    t = T * 60 / (N - 1)  # 平均时间s
+    times = np.zeros(N)
+    socs = np.zeros(N)
+    socs[0] = SOC
+    times[0] = a
+    for i in range(1, N):
+        socs[i] = socs[i - 1] - w
+        times[i] = times[i - 1] + t
+        k = i
+        if socs[i] <= 3.1:  # soc低于3kWh停止运行
+            break
+    times = times[0:k + 1]
+    socs = socs[0:k + 1]
+    for i in range(0, k + 1):
+        time2str.append(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(times[i])))
+    print("Final point:")
+    print(k)
+    print("time2str:")
+    print(time2str)
+    print("socs")
+    print(socs)
+    userID = str(uuid.uuid1())
+    for i in range(0, len(time2str)):
+        sql1.append(
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=socs.tolist()[i], times=time2str[i], flag=flag))
+    Stateofcharge.objects.bulk_create(sql1)
+    response = JsonResponse({'time2str': str(time2str),
+                             'socs': str(json.dumps(socs.tolist())),  # ms
+                             'k': str(k),
+                             'flag': str(flag)})
+    return response
 
 
 #################################################以下为使用到的函数*****************************************************

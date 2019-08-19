@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('charge/', views.charge),
     path('discharge/', views.discharge),
+    path('dischargeTest/', views.dischargeTest),
+    path('chargeTest/', views.chargeTest),
 ]
