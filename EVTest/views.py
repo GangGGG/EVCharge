@@ -63,6 +63,7 @@ def homeprocess(request):
     return render(request, "index.html")
 
 
+# 电池充放电前后端测试
 def charge(request):
     datalist = []
     result = ""
@@ -108,26 +109,60 @@ def charge(request):
 def discharge(request):
     return render(request, 'discharge.html')
 
-
+# 电池充电后端
 def chargeTest(request):
+    flag = 0  # 充电
     SOCStart = float(request.GET.get("n1"))
     SOCChange = float(request.GET.get("n2"))
-    flag = 0  # 充电
-    startTime = datetime.datetime.now().hour * 60 + datetime.datetime.now().minute
-    [Time, SOC, index0, index1] = chargeProcess(startTime, SOCStart, SOCChange)
+    chargeTime = getChargingDate()[0]
+    chargePower = getChargingDate()[1]
+    j = 0
+    k = 0
+    Time2str = []
+    now = datetime.datetime.now()
+    st2minute = time.localtime().tm_hour * 60 + time.localtime().tm_min
+    index0 = int(np.ceil(st2minute / chargeSampleTime))
+    SOC = np.zeros(len(chargePower))
+    SOC[0] = SOCStart
+    SOCNow = SOCStart
+    for i in range(index0 + 1, int(len(chargePower))):
+        j += 1
+        SOCNow += (chargePower[i] * chargeSampleTime) / 60
+        SOC[j] = SOCNow
+        k = i
+        if ((SOCNow - SOCStart) > SOCChange + 0.1):
+            break
+    Time = chargeTime[index0:k]
+    SOC = SOC[0:j]
+    for i in range(0, len(Time)):
+        hour = int(Time[i] / 60)
+        minute = int(Time[i] % 60)
+        if (i == 0):
+            dt_obj = datetime.datetime(now.year, now.month, now.day, hour, minute, now.second)
+        else:
+            second = random.randint(0, 59)
+            dt_obj = datetime.datetime(now.year, now.month, now.day, hour, minute, second)
+        Time2str.append(dt_obj.strftime("%Y-%m-%d %H:%M:%S"))
+    Time = Time.astype(int)
+    #    print(Time)
+    #    print(Time2str)
+    #    print(SOC)
+    SOC = np.around(SOC, decimals=2)
     [chargingElectric, priceAverage, priceFinal] = calculateThePrice(Time, SOC)
-
     sql1 = []
     userID = str(uuid.uuid1())
     for i in range(0, len(Time.tolist())):
         sql1.append(
-            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=SOC.tolist()[i], times=Time.tolist()[i],
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=SOC.tolist()[i], times=Time2str[i],
                           flag=flag))
     Stateofcharge.objects.bulk_create(sql1)
     response = JsonResponse({'realSOCChange': str(chargingElectric),
                              'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
                              'finalPay': str(priceFinal)})
     return response
+
+
+
 
 
 # 记录放电数据
@@ -168,12 +203,6 @@ def dischargeTest(request):
     socs = socs[0:k + 1]
     for i in range(0, k + 1):
         time2str.append(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(times[i])))
-    print("Final point:")
-    print(k)
-    print("time2str:")
-    print(time2str)
-    print("socs")
-    print(socs)
     userID = str(uuid.uuid1())
     for i in range(0, len(time2str)):
         sql1.append(
@@ -195,7 +224,6 @@ def dischargeTest(request):
 # 输入参数：开始充电时间、充电量                    #
 # 系统输出：自动开始充电，并记录至该电动汽车数据库中 #
 ##################################################
-# 根据实时电价计算充电价格
 
 
 # 获取实时电价数据
@@ -217,46 +245,50 @@ def getChargingDate():
     return [time, power]
 
 
-##获取电动汽车实时电量
-# def getEVSOC():
-#    chargeTime=getChargingDate()[0]
-#    chargePower=getChargingDate()[1]
-#    SOC=np.zeros(len(chargePower))
-#    SOC[0]=SOCInitial
-#    for i in range(1,len(chargePower)):
-#        SOC[i]=SOC[i-1]+(chargePower[i-1]*chargeSampleTime)/60
-##    print(SOC)
-#    return[chargeTime,SOC]
-
 # 输入：
-# startTime:开始充电时间
+# startTime:开始充电时间 min
 # SOCStart:开始充电时的电量
 # SOCFinal:需要充多少电
 # 输出:
 # chargeTime:充电时间
 # SOC:电量记录
-def chargeProcess(startTime, SOCStart, SOCChange):
+def chargeProcess(SOCStart, SOCChange):
     chargeTime = getChargingDate()[0]
     chargePower = getChargingDate()[1]
-    #    time=np.zeros(len(chargePower))
-    index0 = int(np.ceil(startTime / chargeSampleTime))
-    #    time[0]=chargeTime[index0]
+    j = 0
+    k = 0
+    Time2str = []
+    now = datetime.datetime.now()
+    st2minute = time.localtime().tm_hour * 60 + time.localtime().tm_min
+    index0 = int(np.ceil(st2minute / chargeSampleTime))
     SOC = np.zeros(len(chargePower))
-    SOC[index0] = SOCStart
+    SOC[0] = SOCStart
     SOCNow = SOCStart
     for i in range(index0 + 1, int(len(chargePower))):
+        j += 1
         SOCNow += (chargePower[i] * chargeSampleTime) / 60
-        SOC[i] = SOCNow
-        if ((SOCNow - SOCStart) > SOCChange):
+        SOC[j] = SOCNow
+        if ((SOCNow - SOCStart) > SOCChange + 0.1):
             k = i
             break
     Time = chargeTime[index0:k]
-    SOC = SOC[index0:k]
+    SOC = SOC[0:j]
+    for i in range(0, len(Time)):
+        hour = int(Time[i] / 60)
+        minute = int(Time[i] % 60)
+        if (i == 0):
+            dt_obj = datetime.datetime(now.year, now.month, now.day, hour, minute, now.second)
+        else:
+            second = random.randint(0, 59)
+            dt_obj = datetime.datetime(now.year, now.month, now.day, hour, minute, second)
+        Time2str.append(dt_obj.strftime("%Y-%m-%d %H:%M:%S"))
+    Time = Time.astype(int)
+    #    print(Time)
+    #    print(Time2str)
+    #    print(SOC)
     index1 = k
-    return [np.around(Time, decimals=2), np.around(SOC, decimals=2), index0, index1]
-
-
-# def dischargeProcess(startTime,endTime):
+    SOC = np.around(SOC, decimals=2)
+    return [Time, Time2str, SOC, index0, index1]
 
 
 # 计算充电电价
@@ -289,10 +321,9 @@ def calculateThePrice(Time, SOC):
     area3 = (tCharge2 - t21) * getPrice()[1][int(t21 / EPriceSampleTime)]  # 右侧不完整面积
     #    print(area1,area2,area3)
     priceAverage = (area1 + area2 + area3) / (tCharge2 - tCharge1)
-    priceFinal = chargingElectric * priceAverage
+    priceFinal = round(chargingElectric * priceAverage,2)
     #    print(priceAverage)
-    return [np.around(chargingElectric, decimals=2), np.around(priceAverage, decimals=2),
-            np.around(priceFinal, decimals=2)]
+    return [chargingElectric, priceAverage, priceFinal]
 
 
 # 绘制电价及充电负荷曲线
@@ -316,3 +347,46 @@ def plotElectricPrice(Time, SOC, index0, index1):
     plt.xlabel('时间(min)', fontproperties='SimHei', fontsize=15)
     plt.xlim(getChargingDate()[0][index0], getChargingDate()[0][index1] - 1)
     plt.show()
+
+
+# 记录放电数据
+#####输入参数:
+#    SOC 当前电量 kWh
+#    W 总耗电量 kWh
+#    T 总时间 min
+#    N 点的总个数
+#####输出参数:
+#    flag:=1放电标志 =0充电标志
+#    k:电动汽车停止运行的点
+#    time2str:充电时间列表
+#    soc:电量列表
+def dischargeProcess(SOC, W, T, N):
+    #    timenow=time.localtime().tm_hour*60+time.localtime().tm_min
+    flag = 1
+    time2str = []
+    a = time.time()  # 获取当前时间s
+    print("当前时间为:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(a)))
+    print("转化为分钟后:%fs" % (a))
+    w = W / (N - 1)  # 平均耗电量
+    t = T * 60 / (N - 1)  # 平均时间s
+    times = np.zeros(N)
+    socs = np.zeros(N)
+    socs[0] = SOC
+    times[0] = a
+    for i in range(1, N):
+        socs[i] = socs[i - 1] - w
+        times[i] = times[i - 1] + t
+        k = i
+        if socs[i] <= 3.1:  # soc低于3kWh停止运行
+            break
+    times = times[0:k + 1]
+    socs = socs[0:k + 1]
+    for i in range(0, k + 1):
+        time2str.append(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(times[i])))
+    print("Final point:")
+    print(k)
+    print("time2str:")
+    print(time2str)
+    print("socs")
+    print(socs)
+    return [time2str, socs, k, flag]
