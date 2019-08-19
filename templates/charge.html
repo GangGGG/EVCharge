@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+
+<div id="header">
+    <h1>电动汽车充电计算</h1>
+</div>
+<div id="navigate">
+    <ul>
+        <li><a href="../">主页</a></li>
+        <li><a href="../charge">充电计算</a></li>
+        <li><a href="../discharge">放电计算</a></li>
+        <li><a href="#about">全程计算</a></li>
+    </ul>
+</div>
+<div id="seting">
+    <div id="seting1">
+        <h1>参数设置</h1>
+        <form action="/charge/" method="post">
+            {% csrf_token %}
+            初始SOC<input type="text" name="initalSOC"/>&emsp;kWh <br>
+            充电量&emsp;<input type="text" name="changeSOC"/>&emsp;kWh<br>
+            <input type="submit" value="开始计算"/>
+        </form>
+        <h1>获取充电信息</h1>
+        <form action="/charge/" method="get">
+            充电次数 <input type="text" name="chargeTimes"/> <br>
+            <input type="submit" value="获取充电数据">
+        </form>
+    </div>
+    <div id="seting2">
+        <table>
+            <thead>
+            <th align="left">充电时间</th>
+            <th>电池情况</th>
+            </thead>
+            <br>
+            <tbody>
+            {% for line in data %}
+                <tr>
+                    <td>{{ line.time }}</td>
+                    <td align="center">{{ line.soc }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="section">
+    <img src="{% static 'img/load.jpg' %}" width="80%" height="80%" align="right">
+</div>
+
+<div id="footer">
+    Copyright GANG.SCU.com.cn
+</div>
+
+</body>
+</html>

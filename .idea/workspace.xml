@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b1d0cb1-2ff4-467f-b21e-ca8b9096878e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/EVCharge.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVCharge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVCharge/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVCharge/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVCharge/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EVTest/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/alien.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/load.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/charge.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/discharge.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EVTest/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="770">
+              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/img/load.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/discharge.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1078">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+              <folding>
+                <marker date="1566116790505" expanded="true" signature="0:60" ph="..." />
+                <marker date="1566116790505" expanded="true" signature="171:304" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/charge.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/img/alien.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/templates/demo.css" />
+        <option value="$PROJECT_DIR$/EVCharge/__init__.py" />
+        <option value="$PROJECT_DIR$/EVTest/__init__.py" />
+        <option value="$PROJECT_DIR$/EVTest/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/EVTest/models.py" />
+        <option value="$PROJECT_DIR$/static/js/demo.js" />
+        <option value="$PROJECT_DIR$/templates/EVSimulation.html" />
+        <option value="$PROJECT_DIR$/templates/MsgSingleWeb.html" />
+        <option value="$PROJECT_DIR$/static/css/demo.css" />
+        <option value="$PROJECT_DIR$/EVTest/admin.py" />
+        <option value="$PROJECT_DIR$/EVCharge/settings.py" />
+        <option value="$PROJECT_DIR$/templates/frameTest.html" />
+        <option value="$PROJECT_DIR$/templates/Hello.html" />
+        <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/EVCharge/urls.py" />
+        <option value="$PROJECT_DIR$/templates/discharge.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/EVTest/views.py" />
+        <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/templates/charge.html" />
+        <option value="$PROJECT_DIR$/static/css/index.css" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-7" />
+    <option name="width" value="1378" />
+    <option name="height" value="745" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="EVTest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EVCharge" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="EVCharge" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/img" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyCode\Pycharm\EVCharge\static\img" />
+      <recent name="G:\Users\Administrator\PycharmProjects\EVCharge" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Users\Administrator\PycharmProjects\EVCharge\static\css" />
+      <recent name="G:\Users\Administrator\PycharmProjects\EVCharge\templates" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="EVCharge" type="Python.DjangoServer" factoryName="Django server">
+      <module name="EVCharge" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="EVCharge.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.1" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b1d0cb1-2ff4-467f-b21e-ca8b9096878e" name="Default Changelist" comment="" />
+      <created>1565919935836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565919935836</updated>
+      <workItem from="1565919936929" duration="17404000" />
+      <workItem from="1565945534599" duration="1536000" />
+      <workItem from="1565947377111" duration="185000" />
+      <workItem from="1565957170129" duration="3446000" />
+      <workItem from="1565961034892" duration="7595000" />
+      <workItem from="1566001330029" duration="14997000" />
+      <workItem from="1566030602660" duration="5944000" />
+      <workItem from="1566041205926" duration="5824000" />
+      <workItem from="1566061634715" duration="16753000" />
+      <workItem from="1566123215061" duration="599000" />
+      <workItem from="1566178621472" duration="1001000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="75330000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="1378" height="745" extended-state="1" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18361153" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32824427" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49620637" visible="true" weight="0.36764705" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5037936" side_tool="true" visible="true" weight="0.36764705" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4977307" weight="0.49275362" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32850242" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" visible="true" weight="0.32850242" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="R Graphics" order="5" />
+      <window_info anchor="right" id="R Packages" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/msgdata.txt" />
+    <entry file="file://$PROJECT_DIR$/EVCharge/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://G:/ProgramData/Anaconda3/Lib/importlib/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/models.py" />
+    <entry file="file://G:/ProgramData/Anaconda3/Lib/site-packages/numpy/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/EVTest/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="167" column="68" selection-start-line="167" selection-start-column="68" selection-end-line="167" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EVTest/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="1488" column="6" selection-start-line="1488" selection-start-column="6" selection-end-line="1488" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/load.png" />
+    <entry file="file://$PROJECT_DIR$/EVTest/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3146">
+          <caret line="143" column="15" selection-start-line="143" selection-start-column="15" selection-end-line="143" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EVCharge/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EVTest/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/frameTest.html" />
+    <entry file="file://$PROJECT_DIR$/static/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Hello.html" />
+    <entry file="file://$PROJECT_DIR$/templates/MsgSingleWeb.html" />
+    <entry file="file://$PROJECT_DIR$/EVCharge/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/EVSimulation.html" />
+    <entry file="file://$PROJECT_DIR$/static/css/demo.css" />
+    <entry file="file://$PROJECT_DIR$/EVTest/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EVCharge/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <folding>
+            <element signature="e#632#664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/django/core/management/commands/runserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="116" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EVTest/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/load.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/discharge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <marker date="1566116790505" expanded="true" signature="0:60" ph="..." />
+            <marker date="1566116790505" expanded="true" signature="171:304" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/charge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/alien.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+  </component>
+</project>

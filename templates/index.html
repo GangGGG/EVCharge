@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+
+<div id="header">
+    <h1>电动汽车充放电计算工具V1.0</h1>
+</div>
+<div id="navigate">
+    <ul>
+        <li><a href="">主页</a></li>
+        <li><a href="/charge">充电计算</a></li>
+        <li><a href="/discharge">放电计算</a></li>
+        <li><a href="#about">全程计算</a></li>
+    </ul>
+</div>
+
+<div id="welcome">
+    <p1>欢迎使用电动汽车充放电计算工具</p1>
+    <ul>
+        <li><a href="/charge">电动汽车充电</a></li>
+        <li><a href="/discharge">电动汽车放电</a></li>
+    </ul>
+</div>
+
+<div id="footer">
+    Copyright GANG.SCU.com.cn
+</div>
+
+</body>
+</html>
