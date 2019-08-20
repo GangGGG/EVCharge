@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from datetime import datetime as d1
 from django.template import Template, Context
-from EVTest.models import TUser, Electricprice, Stateofcharge
+from EVTest.models import Electricprice, Stateofcharge
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.pyplot import plot, savefig
@@ -109,6 +109,7 @@ def charge(request):
 def discharge(request):
     return render(request, 'discharge.html')
 
+
 # 电池充电后端
 def chargeTest(request):
     flag = 0  # 充电
@@ -154,15 +155,12 @@ def chargeTest(request):
     for i in range(0, len(Time.tolist())):
         sql1.append(
             Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=SOC.tolist()[i], times=Time2str[i],
-                          flag=flag))
+                          flag=flag, money=str(priceFinal)))
     Stateofcharge.objects.bulk_create(sql1)
     response = JsonResponse({'realSOCChange': str(chargingElectric),
                              'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
                              'finalPay': str(priceFinal)})
     return response
-
-
-
 
 
 # 记录放电数据
@@ -206,7 +204,8 @@ def dischargeTest(request):
     userID = str(uuid.uuid1())
     for i in range(0, len(time2str)):
         sql1.append(
-            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=socs.tolist()[i], times=time2str[i], flag=flag))
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=socs.tolist()[i], times=time2str[i], flag=flag,
+                          money=str("-")))
     Stateofcharge.objects.bulk_create(sql1)
     response = JsonResponse({'time2str': str(time2str),
                              'socs': str(json.dumps(socs.tolist())),  # ms
@@ -321,7 +320,7 @@ def calculateThePrice(Time, SOC):
     area3 = (tCharge2 - t21) * getPrice()[1][int(t21 / EPriceSampleTime)]  # 右侧不完整面积
     #    print(area1,area2,area3)
     priceAverage = (area1 + area2 + area3) / (tCharge2 - tCharge1)
-    priceFinal = round(chargingElectric * priceAverage,2)
+    priceFinal = round(chargingElectric * priceAverage, 2)
     #    print(priceAverage)
     return [chargingElectric, priceAverage, priceFinal]
 

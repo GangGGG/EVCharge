@@ -137,7 +137,7 @@ class DjangoSession(models.Model):
 
 
 class Electricprice(models.Model):
-    identify = models.IntegerField(db_column='ID', blank=True, null=True)
+    identify = models.IntegerField(db_column='ID', blank=True, null=True)  # Field name made lowercase.
     time = models.FloatField(db_column='Time', blank=True, null=True)  # Field name made lowercase.
     soc = models.FloatField(db_column='SOC', blank=True, null=True)  # Field name made lowercase.
 
@@ -175,12 +175,14 @@ class Husband(models.Model):
         managed = False
         db_table = 'husband'
 
+
 class Stateofcharge(models.Model):
     uuid = models.CharField(db_column='UUID', max_length=64)  # Field name made lowercase.
     userid = models.CharField(db_column='UserID', max_length=64)  # Field name made lowercase.
     soc = models.FloatField(db_column='SOC', blank=True, null=True)  # Field name made lowercase.
     times = models.CharField(db_column='Times', max_length=32, blank=True, null=True)  # Field name made lowercase.
     flag = models.IntegerField(db_column='Flag', blank=True, null=True)  # Field name made lowercase.
+    money = models.CharField(db_column='Money', max_length=10, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
