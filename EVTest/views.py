@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from datetime import datetime as d1
 from django.template import Template, Context
-from EVTest.models import Electricprice, Stateofcharge
+from EVTest.models import Stateofcharge
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.pyplot import plot, savefig

@@ -24,7 +24,8 @@ SECRET_KEY = ')wk84h)8@0xggva@w(j%i1$7i89a+pi6*2n3-p%p@7ae9()u^m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.168.1.151', '127.0.0.1', '192.168.80.1', '192.168.192.1', '10.168.1.108', 'serveA.com']
+ALLOWED_HOSTS = ['10.168.1.151', '127.0.0.1', '192.168.80.1', '192.168.192.1', '10.168.1.108', 'serveA.com',
+                 'aservers.com', 'bservers.com', 'b.com', 'charge', 'localhost']
 
 # Application definition
 
@@ -74,11 +75,10 @@ WSGI_APPLICATION = 'EVCharge.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
-        'NAME': 'mydb1',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        # 'HOST': '10.168.1.108',
-        'HOST': 'localhost',
+        'NAME': 'springcloud-app',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '10.168.1.245',
         'PORT': '3306',
     }
 }
