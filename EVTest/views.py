@@ -115,6 +115,7 @@ def chargeTest(request):
     flag = 0  # 充电
     SOCStart = float(request.GET.get("n1"))
     SOCChange = float(request.GET.get("n2"))
+    UserID = str(request.GET.get("n3"))
     chargeTime = getChargingDate()[0]
     chargePower = getChargingDate()[1]
     j = 0
@@ -151,13 +152,13 @@ def chargeTest(request):
     SOC = np.around(SOC, decimals=2)
     [chargingElectric, priceAverage, priceFinal] = calculateThePrice(Time, SOC)
     sql1 = []
-    userID = str(uuid.uuid1())
     for i in range(0, len(Time.tolist())):
         sql1.append(
-            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=SOC.tolist()[i], times=Time2str[i],
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=UserID, soc=SOC.tolist()[i], times=Time2str[i],
                           flag=flag, money=str(priceFinal)))
     Stateofcharge.objects.bulk_create(sql1)
-    response = JsonResponse({'realSOCChange': str(chargingElectric),
+    response = JsonResponse({'startTime': str(Time2str[0]),
+                             'realSOCChange': str(chargingElectric),
                              'chargeTime': str(int((Time[len(Time) - 1] - Time[0]) * 60000)),  # ms
                              'finalPay': str(priceFinal)})
     return response
@@ -179,6 +180,7 @@ def dischargeTest(request):
     W = float(request.GET.get("n2"))
     T = float(request.GET.get("n3"))
     N = int(request.GET.get("n4"))
+    UserID = str(request.GET.get("n5"))
     flag = 1
     time2str = []
     sql1 = []
@@ -201,10 +203,9 @@ def dischargeTest(request):
     socs = socs[0:k + 1]
     for i in range(0, k + 1):
         time2str.append(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(times[i])))
-    userID = str(uuid.uuid1())
     for i in range(0, len(time2str)):
         sql1.append(
-            Stateofcharge(uuid=str(uuid.uuid1()), userid=userID, soc=socs.tolist()[i], times=time2str[i], flag=flag,
+            Stateofcharge(uuid=str(uuid.uuid1()), userid=UserID, soc=socs.tolist()[i], times=time2str[i], flag=flag,
                           money=str("-")))
     Stateofcharge.objects.bulk_create(sql1)
     response = JsonResponse({'time2str': str(time2str),
