@@ -1,20 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
-<meta charset="utf-8">
-<title>W3Cschool在线教程(w3cschool.cn)</title>
-<script>
-function displayDate(){
-	document.getElementById("demo").innerHTML=Date();
-}
-</script>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript"
+            src="https://api.map.baidu.com/api?v=2.0&ak=y4gYnr5VRjHlkBAIWyrSFG9p5HfxKb0M&__ec_v__=20190126"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
 </head>
-<body>
-
-<h1>我的第一个 JavaScript 程序</h1>
-<p id="demo">这是一个段落</p>
-
-<button type="button" onclick="displayDate()">显示日期</button>
-
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 50%;width: 50%">
+    <script type="text/javascript">
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        option = {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line'
+            }]
+        };
+        ;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+</div>
 </body>
 </html>

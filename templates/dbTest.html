@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据查询测试</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript"
+            src="https://api.map.baidu.com/api?v=2.0&ak=y4gYnr5VRjHlkBAIWyrSFG9p5HfxKb0M&__ec_v__=20190126"></script>
+    <script type="text/javascript"
+            src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+
+<div>
+    <div id="seting">
+        <div id="seting1">
+            <h1>参数设置</h1>
+            <form action="/dbTest/" method="post">
+                {% csrf_token %}
+                用户ID&emsp;<input type="text" name="userID" value="76663ce067824c938d941319efca718a"/><br>
+                交易金额<input type="text" name="money" value="6.16"/><br>
+                <input type="submit" value="开始查询"/>
+            </form>
+        </div>
+        <div id="seting2">
+            <table border="0">
+                <tr>
+                    <th>用户名</th>
+                    <th>电量</th>
+                    <th>时间</th>
+                    <th>交易费用</th>
+                </tr>
+                {% for item in li %}
+                    <tr>
+                        <td>{{ item.userid }}</td>
+                        <td>{{ item.soc }}</td>
+                        <td>{{ item.times }}</td>
+                        <td>{{ item.money }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div id="container">
+        <script type="text/javascript">
+            var dom = document.getElementById("container");
+            var myChart = echarts.init(dom);
+            var app = {};
+            var option = null;
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    type: 'line'
+                }]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

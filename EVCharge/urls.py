@@ -24,4 +24,5 @@ urlpatterns = [
     path('discharge/', views.discharge),
     path('dischargeTest/', views.dischargeTest),
     path('chargeTest/', views.chargeTest),
+    path('dbTest/', views.dbTest),
 ]

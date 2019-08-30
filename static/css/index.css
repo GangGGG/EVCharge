@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    height: 80%;
+    height: 100%;
 }
 
 #header {
@@ -17,15 +17,15 @@ body {
     height: 60%;
     width: 50%;
     float: left;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 #seting1 {
     line-height: 25px;
     background-color: #eeeeee;
     height: 50%;
-    width: 100%;
-    float: left;
+    /*width: 50%;*/
+    /*float: left;*/
     clear: both;
 }
 
@@ -33,12 +33,20 @@ body {
     line-height: 20px;
     background-color: #eeeeee;
     height: 210px;
-    width: 80%;
-    float: left;
+    /*width: 50%;*/
+    /*float: left;*/
     margin-top: 40px;
     overflow: scroll;
     border-top-style: solid;
     border-top-width: 1px;
+}
+
+#container {
+    height: 400px;
+    width: 50%;
+    alignment: left;
+    float: left;
+    display: inline-block;
 }
 
 #section {

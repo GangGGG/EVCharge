@@ -2,10 +2,11 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from datetime import datetime as d1
 from django.template import Template, Context
-from EVTest.models import Stateofcharge
+from EVTest.models import Stateofcharge, Electricprice
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.pyplot import plot, savefig
+from django.db.models import Q
 import random
 import uuid
 import json
@@ -213,6 +214,13 @@ def dischargeTest(request):
                              'k': str(k),
                              'flag': str(flag)})
     return response
+
+
+def dbTest(request):
+    userID = str(request.POST.get("userID", None))
+    money = str(request.POST.get("money", None))
+    user_list_obj = Stateofcharge.objects.filter(Q(userid=userID) | Q(money=money))
+    return render(request, 'dbTest.html', {'li': user_list_obj})
 
 
 #################################################以下为使用到的函数*****************************************************
