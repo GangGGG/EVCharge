@@ -217,10 +217,20 @@ def dischargeTest(request):
 
 
 def dbTest(request):
-    userID = str(request.POST.get("userID", None))
-    money = str(request.POST.get("money", None))
-    user_list_obj = Stateofcharge.objects.filter(Q(userid=userID) | Q(money=money))
-    return render(request, 'dbTest.html', {'li': user_list_obj})
+    # userID = str(request.POST.get("userID", None))
+    # money = str(request.POST.get("money", None))
+    userID = "76663ce067824c938d941319efca718a"
+    money = 6.16
+    Time = []
+    StateOfCharge = []
+    user_list_obj = Stateofcharge.objects.filter(Q(userid=userID) & Q(money=money))
+
+    for i in user_list_obj:
+        Time.append(i.times)
+        StateOfCharge.append(i.soc)
+    response = JsonResponse({'UserID': userID, 'Money': money, 'time': Time, 'SOC': StateOfCharge})
+    # return render(request, 'dbTest.html', {'li': user_list_obj})
+    return response
 
 
 #################################################以下为使用到的函数*****************************************************
