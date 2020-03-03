@@ -165,6 +165,17 @@ def chargeTest(request):
     return response
 
 
+def EVLoadCurve(request):
+    dts = ["2020-03-03 00:00:00", "2020-03-03 08:00:00", "2020-03-03 09:00:00", "2020-03-03 12:00:00",
+           "2020-03-03 17:00:00", "2020-03-03 18:00:00", "2020-03-03 20:00:00", "2020-03-04 00:00:00"]
+    power = [24, 24, 14, 13.8, 20, 20, 17, 17]
+    response = JsonResponse({
+        'time': str(dts),
+        'power': str(power)
+    })
+    return response
+
+
 # 记录放电数据
 #####输入参数:
 #    SOC 当前电量 kWh

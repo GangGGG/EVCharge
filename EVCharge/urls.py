@@ -25,4 +25,5 @@ urlpatterns = [
     path('dischargeTest/', views.dischargeTest),
     path('chargeTest/', views.chargeTest),
     path('dbTest/', views.dbTest),
+    path('EVLoadCurve/', views.EVLoadCurve),
 ]
